@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:recipe_app/views/register-page.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
 
   double screenHeight;
   double screenWidth;
@@ -17,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   double borderRadius;
   bool hidePass;
   IconData visIcon;
-  String email, password;
+  String name, email, password;
 
   var formKey = GlobalKey<FormState>();
 
@@ -85,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
               elevation: 5,
               color: Colors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(borderRadius)
+                borderRadius: BorderRadius.circular(borderRadius)
               ),
               child: Container(
                 height: screenHeight * 0.75,
@@ -97,23 +96,23 @@ class _LoginPageState extends State<LoginPage> {
 
                     // Logo
                     Text.rich(
-                        TextSpan(
-                            children: [
-                              TextSpan(
-                                  text: 'Recipy',
-                                  style: GoogleFonts.raleway(
-                                    fontSize: 40,
-                                  )
-                              ),
-                              TextSpan(
-                                  text: '.',
-                                  style: TextStyle(
-                                      fontSize: 60,
-                                      color: pinkTheme
-                                  )
-                              )
-                            ]
-                        )
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Recipy',
+                            style: GoogleFonts.raleway(
+                              fontSize: 40,
+                            )
+                          ),
+                          TextSpan(
+                            text: '.',
+                            style: TextStyle(
+                              fontSize: 60,
+                              color: pinkTheme
+                            )
+                          )
+                        ]
+                      )
                     ),
 
                     Form(
@@ -121,6 +120,34 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+
+                          TextFormField(
+                            keyboardType: TextInputType.name,
+                            enableSuggestions: true,
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            onSaved: (val) => this.name = val,
+                            validator: (val){
+                              if(val.isEmpty){
+                                return 'Please enter your valid name.';
+                              }
+                              else{
+                                return null;
+                              }
+                            },
+                            decoration: InputDecoration(
+                              hintText: 'Name',
+                              labelText: 'Name',
+                              prefixIcon: Icon(Icons.person_outline),
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(borderRadius)
+                              ),
+                              focusedBorder: validBorder(borderRadius, pinkTheme),
+                              errorBorder: errorBorder(borderRadius),
+                              focusedErrorBorder: errorBorder(borderRadius),
+                            ),
+                          ),
+
+                          SizedBox(height: 20,),
 
                           TextFormField(
                             keyboardType: TextInputType.emailAddress,
@@ -140,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                               labelText: 'Email',
                               prefixIcon: Icon(Icons.email_outlined),
                               enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(borderRadius)
+                                borderRadius: BorderRadius.circular(borderRadius)
                               ),
                               focusedBorder: validBorder(borderRadius, pinkTheme),
                               errorBorder: errorBorder(borderRadius),
@@ -199,21 +226,17 @@ class _LoginPageState extends State<LoginPage> {
                     Container(
                       child: Column(
                         children: [
-                          Text('Don`t have a recipy? Come join us.'),
+                          Text('Already have a recipy? Let`s login.'),
                           InkWell(
                             onTap: (){
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => RegisterPage()
-                                )
-                              );
+                              Navigator.of(context).pop();
                             },
                             child: Text(
-                              'Register',
+                              'Login',
                               style: TextStyle(
-                                  fontStyle: FontStyle.normal,
-                                  decoration: TextDecoration.underline,
-                                  color: pinkTheme
+                                fontStyle: FontStyle.normal,
+                                decoration: TextDecoration.underline,
+                                color: pinkTheme
                               ),
                             ),
                           ),
@@ -240,9 +263,9 @@ class _LoginPageState extends State<LoginPage> {
                       minWidth: 150,
                       height: 50,
                       child: Text(
-                        'Login',
+                        'Sign Up',
                         style: TextStyle(
-                            color: Colors.white
+                          color: Colors.white
                         ),
                       ),
                       shape: RoundedRectangleBorder(
