@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/views/create-recipe-page.dart';
+import 'package:recipe_app/views/home-page.dart';
 import 'package:recipe_app/views/login-page.dart';
 import 'package:recipe_app/views/register-page.dart';
 
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: LoginPage(),
+      home: HomePage(),
     );
   }
 }

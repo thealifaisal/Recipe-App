@@ -52,9 +52,16 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   assets:
-    - assets/images/tomatoes-bg.jpg
-    - assets/images/coffee-bg.jpg
-    - assets/images/sweets-bg.jpg
+    - assets/images/bg/tomatoes-bg.jpg
+    - assets/images/bg/coffee-bg.jpg
+    - assets/images/bg/sweets-bg.jpg
+    - assets/images/recipes/beef-burger.jpg
+    - assets/images/recipes/chocolate-ice-cream.jpg
+    - assets/images/recipes/spaghetti.jpg
+    - assets/images/recipes/biryani.jpg
+    - assets/images/recipes/broast.jpg
+    - assets/images/recipes/medium-rare.jpg
+    - assets/images/recipes/pizza.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

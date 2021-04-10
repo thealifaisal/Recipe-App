@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:recipe_app/components/RecipyLogo.dart';
 import 'package:recipe_app/views/register-page.dart';
+import 'package:recipe_app/RecipeAppTheme.dart';
+
+import 'home-page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -42,8 +45,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
 
-    bgImage = 'assets/images/sweets-bg.jpg';
-    pinkTheme = Color(0xFFB83C82);
+    bgImage = 'assets/images/bg/sweets-bg.jpg';
+    pinkTheme = RecipeAppTheme.pinkTheme;
     borderRadius = 5;
     hidePass = true;
     visIcon = Icons.visibility;
@@ -96,25 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
 
                     // Logo
-                    Text.rich(
-                        TextSpan(
-                            children: [
-                              TextSpan(
-                                  text: 'Recipy',
-                                  style: GoogleFonts.raleway(
-                                    fontSize: 40,
-                                  )
-                              ),
-                              TextSpan(
-                                  text: '.',
-                                  style: TextStyle(
-                                      fontSize: 60,
-                                      color: pinkTheme
-                                  )
-                              )
-                            ]
-                        )
-                    ),
+                    RecipyLogo(dotFontSize: 40, recipyFontSize: 60,),
 
                     Form(
                       key: formKey,
@@ -226,11 +211,11 @@ class _LoginPageState extends State<LoginPage> {
                         if(formKey.currentState.validate()){
                           formKey.currentState.save();
                           print('form valid');
-//                          Navigator.of(context).push(
-//                              MaterialPageRoute(
-//                                builder: (context)=>HomePage(),
-//                              )
-//                          );
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context)=>HomePage(),
+                              )
+                          );
                         }
                         else{
                           print('form invalid');

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:recipe_app/components/RecipyLogo.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -41,7 +41,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void initState() {
 
-    bgImage = 'assets/images/sweets-bg.jpg';
+    bgImage = 'assets/images/bg/sweets-bg.jpg';
     pinkTheme = Color(0xFFB83C82);
     borderRadius = 5;
     hidePass = true;
@@ -95,25 +95,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: [
 
                     // Logo
-                    Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'Recipy',
-                            style: GoogleFonts.raleway(
-                              fontSize: 40,
-                            )
-                          ),
-                          TextSpan(
-                            text: '.',
-                            style: TextStyle(
-                              fontSize: 60,
-                              color: pinkTheme
-                            )
-                          )
-                        ]
-                      )
-                    ),
+                    RecipyLogo(dotFontSize: 40, recipyFontSize: 60,),
 
                     Form(
                       key: formKey,
