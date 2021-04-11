@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_app/components/AppBar.dart';
 import 'package:recipe_app/components/RecipeCard.dart';
-import 'package:recipe_app/RecipeAppTheme.dart';
+import 'package:recipe_app/app-config.dart';
 import 'package:recipe_app/components/SideDrawer.dart';
 
 class HomePage extends StatefulWidget {

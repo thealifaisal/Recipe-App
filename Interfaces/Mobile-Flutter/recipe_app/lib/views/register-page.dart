@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:recipe_app/app-config.dart';
 import 'package:recipe_app/components/RecipyLogo.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -42,7 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
   void initState() {
 
     bgImage = 'assets/images/bg/sweets-bg.jpg';
-    pinkTheme = Color(0xFFB83C82);
+    pinkTheme = RecipeAppTheme.pinkTheme;
     borderRadius = 5;
     hidePass = true;
     visIcon = Icons.visibility;

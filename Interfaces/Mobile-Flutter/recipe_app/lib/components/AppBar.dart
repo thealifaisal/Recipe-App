@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:recipe_app/RecipeAppTheme.dart';
+import 'package:recipe_app/app-config.dart';
 
 import 'RecipyLogo.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:recipe_app/components/RecipyLogo.dart';
 import 'package:recipe_app/views/register-page.dart';
-import 'package:recipe_app/RecipeAppTheme.dart';
+import 'package:recipe_app/app-config.dart';
 
 import 'home-page.dart';
 
