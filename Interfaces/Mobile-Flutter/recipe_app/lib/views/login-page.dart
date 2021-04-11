@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:recipe_app/components/RecipeTextButton.dart';
 import 'package:recipe_app/components/RecipyLogo.dart';
+import 'package:recipe_app/components/TextFieldPassword.dart';
+import 'package:recipe_app/components/TextFieldShort.dart';
+import 'package:recipe_app/controller/TextFieldController.dart';
 import 'package:recipe_app/views/register-page.dart';
 import 'package:recipe_app/app-config.dart';
 
@@ -23,24 +27,6 @@ class _LoginPageState extends State<LoginPage> {
   String email, password;
 
   var formKey = GlobalKey<FormState>();
-
-  OutlineInputBorder errorBorder(double borderRadius){
-    return OutlineInputBorder(
-        borderRadius: BorderRadius.circular(borderRadius),
-        borderSide: BorderSide(
-            color: Colors.red
-        )
-    );
-  }
-
-  OutlineInputBorder validBorder(double borderRadius, Color pinkTheme){
-    return OutlineInputBorder(
-        borderRadius: BorderRadius.circular(borderRadius),
-        borderSide: BorderSide(
-            color: pinkTheme
-        )
-    );
-  }
 
   @override
   void initState() {
@@ -107,76 +93,45 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
 
-                          TextFormField(
+                          //
+                          // Email TextField
+                          //
+                          ShortTextField(
+                            hintText: "abc@gmail.com",
+                            labelText: "Email",
+                            prefixIcon: Icons.email,
                             keyboardType: TextInputType.emailAddress,
-                            enableSuggestions: true,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            onSaved: (val) => this.email = val,
-                            validator: (val){
-                              if(val.isEmpty || !val.contains('@')){
-                                return 'Please enter a valid email.';
-                              }
-                              else{
-                                return null;
-                              }
-                            },
-                            decoration: InputDecoration(
-                              hintText: 'Email',
-                              labelText: 'Email',
-                              prefixIcon: Icon(Icons.email_outlined),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(borderRadius)
-                              ),
-                              focusedBorder: validBorder(borderRadius, pinkTheme),
-                              errorBorder: errorBorder(borderRadius),
-                              focusedErrorBorder: errorBorder(borderRadius),
-                            ),
+                            onValidateFunc: TextFieldController.emailValidator,
+                            onSaveFunc: (val){this.email = val;}
                           ),
 
                           SizedBox(height: 20,),
 
-                          TextFormField(
-                            keyboardType: TextInputType.visiblePassword,
-                            obscureText: hidePass,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            onSaved: (val) => this.password = val,
-                            validator: (val){
-                              if(val.isEmpty){
-                                return 'Please enter a password.';
-                              }
-                              else if(val.length < 8){
-                                return 'Password should be 8 characters long.';
-                              }
-                              else{
-                                return null;
-                              }
+                          //
+                          // Password TextField
+                          //
+                          PasswordTextField(
+                            hintText: "Password",
+                            labelText: "Password",
+                            onValidateFunc: TextFieldController.passwordValidator,
+                            onSaveFunc: (val){this.password = val;},
+                            prefixIcon: Icons.security_sharp,
+                            hidePass: hidePass,
+                            visIcon: visIcon,
+                            showPassFunc: (){
+                              setState(() {
+                                if(hidePass){
+                                  visIcon = Icons.visibility_off;
+                                }
+                                else{
+                                  visIcon = Icons.visibility;
+                                }
+                                hidePass = !hidePass;
+                              });
                             },
-                            decoration: InputDecoration(
-                              hintText: 'Password',
-                              labelText: 'Password',
-                              prefixIcon: Icon(Icons.security_sharp),
-                              suffixIcon: InkWell(
-                                child: Icon(visIcon),
-                                onTap: (){
-                                  setState(() {
-                                    if(hidePass){
-                                      visIcon = Icons.visibility_off;
-                                    }
-                                    else{
-                                      visIcon = Icons.visibility;
-                                    }
-                                    hidePass = !hidePass;
-                                  });
-                                },
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(borderRadius),
-                              ),
-                              focusedBorder: validBorder(borderRadius, pinkTheme),
-                              errorBorder: errorBorder(borderRadius),
-                              focusedErrorBorder: errorBorder(borderRadius),
-                            ),
                           )
+
+
                         ],
                       ),
                     ),
@@ -206,13 +161,19 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
 
-                    MaterialButton(
-                      onPressed: (){
+                    RecipeTextButton(
+                      btnText: "Login",
+                      height: 50,
+                      width: 150,
+                      onPressedFunc: (){
                         if(formKey.currentState.validate()){
                           formKey.currentState.save();
                           print('form valid');
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
+                                settings: RouteSettings(
+                                    name: "home"
+                                ),
                                 builder: (context)=>HomePage(),
                               )
                           );
@@ -221,18 +182,6 @@ class _LoginPageState extends State<LoginPage> {
                           print('form invalid');
                         }
                       },
-                      color: pinkTheme,
-                      minWidth: 150,
-                      height: 50,
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                            color: Colors.white
-                        ),
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(borderRadius),
-                      ),
                     ),
 
                   ],

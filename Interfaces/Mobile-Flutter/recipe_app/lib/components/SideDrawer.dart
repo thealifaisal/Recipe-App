@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:recipe_app/app-config.dart';
 import 'package:recipe_app/components/RecipeDrawerTile.dart';
 import 'package:recipe_app/components/RecipyLogo.dart';
+import 'package:recipe_app/views/create-recipe-page.dart';
+import 'package:recipe_app/views/home-page.dart';
 
 // ignore: must_be_immutable
 class RecipeSideDrawer extends StatelessWidget {
@@ -27,20 +28,52 @@ class RecipeSideDrawer extends StatelessWidget {
             child: RecipyLogo(dotFontSize: 32, recipyFontSize: 32,),
           ),
 
-          RecipeDrawerTile(tileIcon: Icons.home, title: "Home Page", onTap: (){}),
+          RecipeDrawerTile(tileIcon: Icons.home, title: "Home Page", onTap: (){
+            if(ModalRoute.of(context).settings.name != "home"){
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  settings: RouteSettings(
+                    name: "home"
+                  ),
+                  builder: (context)=>HomePage()
+                ),
+              );
+            }
+          }),
+
           RecipeDrawerTile(tileIcon: Icons.person_pin, title: "My Profile", onTap: (){}),
-          RecipeDrawerTile(tileIcon: Icons.fastfood, title: "Create a Recipe", onTap: (){}),
+
+          RecipeDrawerTile(tileIcon: Icons.fastfood, title: "Create a Recipe", onTap: (){
+            if(ModalRoute.of(context).settings.name != "create_recipe"){
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                    settings: RouteSettings(
+                        name: "create_recipe"
+                    ),
+                    builder: (context)=>CreateRecipePage()
+                ),
+              );
+            }
+          }),
+
           RecipeDrawerTile(tileIcon: Icons.favorite, title: "Favorite Recipes", onTap: (){}),
+
           // -
           // My Reviews Page: Where a user could see the reviews
           // and edit their reviews on different recipes
           // -
+
+
           Divider(),
+
 
           RecipeDrawerTile(tileIcon: Icons.settings_applications, title: "App Settings", onTap: (){}),
+
           RecipeDrawerTile(tileIcon: Icons.info_outline, title: "About Recipy", onTap: (){}),
 
+
           Divider(),
+
 
           RecipeDrawerTile(tileIcon: Icons.arrow_back_outlined, title: "Logout", onTap: (){}),
 

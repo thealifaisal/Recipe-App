@@ -18,7 +18,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: CreateRecipePage(),
+      home: LoginPage(),
+      routes: {
+        "login": (context)=>LoginPage(),
+        "register": (context)=>RegisterPage(),
+        "home": (context)=>HomePage(),
+        "create_recipe": (context)=>CreateRecipePage(),
+      },
     );
   }
 }
