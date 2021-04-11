@@ -89,7 +89,7 @@ class RecipeSideDrawer extends StatelessWidget {
 
           RecipeDrawerTile(tileIcon: Icons.arrow_back_outlined, title: "Logout", onTap: (){
 
-            
+
 
           }),
 

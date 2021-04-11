@@ -168,15 +168,17 @@ class _RegisterPageState extends State<RegisterPage> {
 
                     RecipeTextButton(
                       btnText: "Sign Up",
-                      height: 150,
-                      width: 50,
-                      borderRadius: 5,
+                      height: 50,
+                      width: 150,
                       onPressedFunc: (){
                         if(formKey.currentState.validate()){
                           formKey.currentState.save();
                           print('form valid');
-//                          Navigator.of(context).push(
+//                          Navigator.of(context).pushReplacement(
 //                              MaterialPageRoute(
+//                                settings: RouteSettings(
+//                                    name: "home"
+//                                ),
 //                                builder: (context)=>HomePage(),
 //                              )
 //                          );
@@ -185,7 +187,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           print('form invalid');
                         }
                       },
-                    )
+                    ),
 
                   ],
                 ),
