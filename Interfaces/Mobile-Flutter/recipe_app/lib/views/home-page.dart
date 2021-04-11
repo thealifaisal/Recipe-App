@@ -4,6 +4,7 @@ import 'package:recipe_app/components/AppBar.dart';
 import 'package:recipe_app/components/RecipeCard.dart';
 import 'package:recipe_app/app-config.dart';
 import 'package:recipe_app/components/SideDrawer.dart';
+import 'package:recipe_app/views/recipe-page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,10 +17,6 @@ class _HomePageState extends State<HomePage> {
   double screenWidth;
   Color pinkTheme;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  double screenLeftPad = RecipeAppTheme.screenLeftPad;
-  double screenRightPad = RecipeAppTheme.screenRightPad;
-  double screenTopPad = RecipeAppTheme.screenTopPad;
-  double screenBottomPad = RecipeAppTheme.screenBottomPad;
 
   @override
   void initState() {
@@ -27,6 +24,17 @@ class _HomePageState extends State<HomePage> {
     pinkTheme = RecipeAppTheme.pinkTheme;
     // TODO: implement initState
     super.initState();
+  }
+
+  void onPressedFunc(BuildContext context){
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        settings: RouteSettings(
+          name: "view_recipe"
+        ),
+        builder: (context)=>RecipePage()
+      ),
+    );
   }
 
   @override
@@ -43,17 +51,17 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: RecipeSideDrawer(),
       body: ListView(
-        padding: EdgeInsets.only(left: screenLeftPad, right: screenRightPad, top: screenTopPad, bottom: screenBottomPad),
+        padding: EdgeInsets.only(left: 5, right: 5, top: 10, bottom: 10),
         children: [
 
           // recipe cards
-          RecipeCard(imagePath: "assets/images/recipes/beef-burger.jpg", recipeName: "Beef Burger"),
-          RecipeCard(imagePath: "assets/images/recipes/spaghetti.jpg", recipeName: "Spaghetti"),
-          RecipeCard(imagePath: "assets/images/recipes/chocolate-ice-cream.jpg", recipeName: "Chocolate Ice Cream"),
-          RecipeCard(imagePath: "assets/images/recipes/biryani.jpg", recipeName: "Chicken Biryani"),
-          RecipeCard(imagePath: "assets/images/recipes/broast.jpg", recipeName: "Fried Chicken"),
-          RecipeCard(imagePath: "assets/images/recipes/medium-rare.jpg", recipeName: "Steak (Medium Rare)"),
-          RecipeCard(imagePath: "assets/images/recipes/pizza.jpg", recipeName: "BBQ Pizza"),
+          RecipeCard(imagePath: "assets/images/recipes/beef-burger.jpg", recipeName: "Beef Burger", onPressedFunc: onPressedFunc),
+          RecipeCard(imagePath: "assets/images/recipes/spaghetti.jpg", recipeName: "Spaghetti", onPressedFunc: onPressedFunc),
+          RecipeCard(imagePath: "assets/images/recipes/chocolate-ice-cream.jpg", recipeName: "Chocolate Ice Cream", onPressedFunc: onPressedFunc),
+          RecipeCard(imagePath: "assets/images/recipes/biryani.jpg", recipeName: "Chicken Biryani", onPressedFunc: onPressedFunc),
+          RecipeCard(imagePath: "assets/images/recipes/broast.jpg", recipeName: "Fried Chicken", onPressedFunc: onPressedFunc),
+          RecipeCard(imagePath: "assets/images/recipes/medium-rare.jpg", recipeName: "Steak (Medium Rare)", onPressedFunc: onPressedFunc),
+          RecipeCard(imagePath: "assets/images/recipes/pizza.jpg", recipeName: "BBQ Pizza", onPressedFunc: onPressedFunc),
 
         ],
       ),

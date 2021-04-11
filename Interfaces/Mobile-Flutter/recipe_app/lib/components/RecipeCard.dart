@@ -8,8 +8,10 @@ class RecipeCard extends StatelessWidget {
   String imagePath, recipeName;
   final pinkTheme = RecipeAppTheme.pinkTheme;
   double screenHeight, screenWidth;
+  var onPressedFunc;
+  IconData favIcon;
 
-  RecipeCard({@required this.imagePath, @required this.recipeName});
+  RecipeCard({@required this.imagePath, @required this.recipeName, this.onPressedFunc, this.favIcon=Icons.favorite_border});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +20,10 @@ class RecipeCard extends StatelessWidget {
     screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
-      margin: EdgeInsets.all(8),
+      margin: EdgeInsets.only(bottom: 10, top: 5),
       child: Card(
-        shadowColor: pinkTheme.withOpacity(0.8),
-        elevation: 5,
+        shadowColor: pinkTheme.withOpacity(0.6),
+        elevation: 4,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5),
 
@@ -34,16 +36,21 @@ class RecipeCard extends StatelessWidget {
               //
               // Image Container
               //
-              Container(
-                height: screenHeight * 0.18,
-                width: screenWidth,
-                margin: EdgeInsets.only(bottom: 10),
-                child: Image.asset(
-                  imagePath,
-                  fit: BoxFit.cover,
-                  filterQuality: FilterQuality.high,
-                  isAntiAlias: false,
+              InkWell(
+                onTap: (){
+                  onPressedFunc(context);
+                },
+                child: Container(
+                  height: screenHeight * 0.18,
+                  width: screenWidth,
+                  margin: EdgeInsets.only(bottom: 10),
+                  child: Image.asset(
+                    imagePath,
+                    fit: BoxFit.cover,
+                    filterQuality: FilterQuality.high,
+                    isAntiAlias: false,
 
+                  ),
                 ),
               ),
 
@@ -55,13 +62,18 @@ class RecipeCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
 
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      recipeName,
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400
+                  InkWell(
+                    onTap: (){
+                      onPressedFunc(context);
+                    },
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        recipeName,
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400
+                        ),
                       ),
                     ),
                   ),
@@ -71,7 +83,7 @@ class RecipeCard extends StatelessWidget {
                       IconButton(
                         onPressed: (){},
                         icon: Icon(
-                          Icons.favorite_border,
+                          favIcon,
                           color: Colors.pink,
                         ),
                       ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/app-config.dart';
 import 'package:recipe_app/components/RecipeDrawerTile.dart';
 import 'package:recipe_app/components/RecipyLogo.dart';
+import 'package:recipe_app/views/favorite-page.dart';
 import 'package:recipe_app/views/create-recipe-page.dart';
 import 'package:recipe_app/views/home-page.dart';
 
@@ -56,7 +57,18 @@ class RecipeSideDrawer extends StatelessWidget {
             }
           }),
 
-          RecipeDrawerTile(tileIcon: Icons.favorite, title: "Favorite Recipes", onTap: (){}),
+          RecipeDrawerTile(tileIcon: Icons.favorite, title: "Favorite Recipes", onTap: (){
+            if(ModalRoute.of(context).settings.name != "favorites"){
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                    settings: RouteSettings(
+                        name: "favorites"
+                    ),
+                    builder: (context)=>FavoriteRecipesPage()
+                ),
+              );
+            }
+          }),
 
           // -
           // My Reviews Page: Where a user could see the reviews

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/views/favorite-page.dart';
 import 'package:recipe_app/views/create-recipe-page.dart';
 import 'package:recipe_app/views/home-page.dart';
 import 'package:recipe_app/views/login-page.dart';
@@ -19,13 +20,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: RecipePage(),
+      home: LoginPage(),
       routes: {
         "login": (context)=>LoginPage(),
         "register": (context)=>RegisterPage(),
         "home": (context)=>HomePage(),
         "create_recipe": (context)=>CreateRecipePage(),
         "view_recipe": (context)=>RecipePage(),
+        "favorites": (context)=>FavoriteRecipesPage(),
       },
     );
   }

@@ -17,10 +17,6 @@ class _RecipePageState extends State<RecipePage> {
   double screenWidth;
   Color pinkTheme;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  double screenLeftPad = RecipeAppTheme.screenLeftPad;
-  double screenRightPad = RecipeAppTheme.screenRightPad;
-  double screenTopPad = RecipeAppTheme.screenTopPad;
-  double screenBottomPad = RecipeAppTheme.screenBottomPad;
 
   var ingredients = ["Tomatoes", "Onions", "Cheese", "Beef Patty", "Lettuce", "Buns"];
   var steps = ["Heat the Buns", "Place Lettuce", "Place patty", "Place the cheese", "Add tomatoes", "Add onions"];
