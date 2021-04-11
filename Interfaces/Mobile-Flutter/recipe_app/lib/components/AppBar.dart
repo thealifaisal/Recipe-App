@@ -12,7 +12,13 @@ class RecipeAppBar extends StatelessWidget implements PreferredSizeWidget {
   double screenHeight;
   GlobalKey<ScaffoldState> scaffoldKey;
 
-  RecipeAppBar({@required this.screenHeight, @required this.scaffoldKey});
+  // when don't want to show drawer, and want to show back button
+  // by default = true; open drawer
+  bool drawer;
+  // by default = Icons.line_weight_rounded; show drawer icon
+  IconData appBarIcon;
+
+  RecipeAppBar({@required this.screenHeight, @required this.scaffoldKey, this.drawer=true, this.appBarIcon=Icons.line_weight_rounded});
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +26,16 @@ class RecipeAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: InkWell(
         onTap: (){
-          scaffoldKey.currentState.openDrawer();
+          if(drawer){
+            scaffoldKey.currentState.openDrawer();
+          }
+          else{
+            // if drawer = false, this means the icon is back button and pop the page from stack
+            Navigator.of(context).pop();
+          }
         },
         child: Icon(
-          Icons.line_weight_rounded,
+          appBarIcon,
           color: pinkTheme,
         ),
       ),

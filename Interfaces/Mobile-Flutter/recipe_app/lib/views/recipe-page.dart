@@ -40,6 +40,9 @@ class _RecipePageState extends State<RecipePage> {
       appBar: RecipeAppBar(
         screenHeight: screenHeight,
         scaffoldKey: scaffoldKey,
+        drawer: false,
+        appBarIcon: Icons.arrow_back
+        ,
       ),
       drawer: RecipeSideDrawer(),
       body: ListView(
