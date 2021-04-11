@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/views/create-recipe-page.dart';
 import 'package:recipe_app/views/home-page.dart';
 import 'package:recipe_app/views/login-page.dart';
+import 'package:recipe_app/views/recipe-page.dart';
 import 'package:recipe_app/views/register-page.dart';
 
 void main() {
@@ -18,12 +19,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: LoginPage(),
+      home: RecipePage(),
       routes: {
         "login": (context)=>LoginPage(),
         "register": (context)=>RegisterPage(),
         "home": (context)=>HomePage(),
         "create_recipe": (context)=>CreateRecipePage(),
+        "view_recipe": (context)=>RecipePage(),
       },
     );
   }

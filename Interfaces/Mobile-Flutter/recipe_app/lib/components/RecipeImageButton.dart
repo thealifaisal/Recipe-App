@@ -5,12 +5,12 @@ import 'package:recipe_app/app-config.dart';
 class RecipeImageButton extends StatelessWidget {
 
   final Color pinkTheme = RecipeAppTheme.pinkTheme;
-  double screenHeight, screenWidth;
+  double screenHeight, screenWidth, elevation;
   String recipeImage;
   var onPressedFunc;
 
   // recipeImage: when no path is passed, default is used
-  RecipeImageButton({this.recipeImage = "assets/images/placeholder-image.png", this.onPressedFunc});
+  RecipeImageButton({this.recipeImage = "assets/images/placeholder-image.png", this.onPressedFunc, this.elevation = 3});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,8 @@ class RecipeImageButton extends StatelessWidget {
         // Image Container
         //
         Material(
-          elevation: 3,
+          elevation: elevation,
+          shadowColor: pinkTheme.withOpacity(0.6),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5)
           ),
