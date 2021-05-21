@@ -1,0 +1,5 @@
+For Back-end run :
+$ ./node_modules/.bin/json-server-auth ./backend/db.json --port 3001
+
+For starting the server:
+npm start
