@@ -1,0 +1,1 @@
+https://www.syncfusion.com/blogs/post/how-to-build-crud-rest-apis-with-asp-net-core-3-1-and-entity-framework-core-create-jwt-tokens-and-secure-apis.aspx#create-an-ASP-NET-Core-REST-API-application
