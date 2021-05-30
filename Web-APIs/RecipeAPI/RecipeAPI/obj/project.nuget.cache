@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "UUhVneTA++10a5YBPhiHehCLfDuRn4Jel3v3TaZvHPYEIGExTQj8EiiWsp9IL7e3VlUmlgqUOnHkpjM2w0t9cg==",
+  "dgSpecHash": "KT4ezfBLLmEP9vnJM9fjZ3EOC+e9RxyjsiXYbG9qJx5OHGEH7cg2Vg9RLEE0HY4rN56FoQxj5cjr9kwM4+LiUg==",
   "success": true,
   "projectFilePath": "E:\\Projects\\ipt-project\\Recipe-App\\Web-APIs\\RecipeAPI\\RecipeAPI\\RecipeAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Aiman\\.nuget\\packages\\microsoft.aspnetcore.authentication.certificate\\3.0.3\\microsoft.aspnetcore.authentication.certificate.3.0.3.nupkg.sha512",
     "C:\\Users\\Aiman\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.15\\microsoft.aspnetcore.authentication.jwtbearer.3.1.15.nupkg.sha512",
     "C:\\Users\\Aiman\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Aiman\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
