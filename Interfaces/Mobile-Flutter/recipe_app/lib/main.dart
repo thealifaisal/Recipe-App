@@ -5,6 +5,7 @@ import 'package:recipe_app/views/home-page.dart';
 import 'package:recipe_app/views/login-page.dart';
 import 'package:recipe_app/views/recipe-page.dart';
 import 'package:recipe_app/views/register-page.dart';
+import 'package:recipe_app/views/splash-page.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,8 +21,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: LoginPage(),
+      home: CreateRecipePage(),
       routes: {
+        "splash": (context)=>SplashPage(),
         "login": (context)=>LoginPage(),
         "register": (context)=>RegisterPage(),
         "home": (context)=>HomePage(),
