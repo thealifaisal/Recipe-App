@@ -266,3 +266,5 @@ E:\Projects\ipt-project\Recipe-App\Web-APIs\RecipeAPI\RecipeAPI\obj\Debug\netcor
 E:\Projects\ipt-project\Recipe-App\Web-APIs\RecipeAPI\RecipeAPI\obj\Debug\netcoreapp3.1\RecipeAPI.dll
 E:\Projects\ipt-project\Recipe-App\Web-APIs\RecipeAPI\RecipeAPI\obj\Debug\netcoreapp3.1\RecipeAPI.pdb
 E:\Projects\ipt-project\Recipe-App\Web-APIs\RecipeAPI\RecipeAPI\obj\Debug\netcoreapp3.1\RecipeAPI.genruntimeconfig.cache
+E:\Projects\ipt-project\Recipe-App\Web-APIs\RecipeAPI\RecipeAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Certificate.dll
+E:\Projects\ipt-project\Recipe-App\Web-APIs\RecipeAPI\RecipeAPI\bin\Debug\netcoreapp3.1\web.config

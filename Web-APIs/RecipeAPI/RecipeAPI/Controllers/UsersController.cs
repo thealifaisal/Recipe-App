@@ -41,6 +41,18 @@ namespace RecipeAPI.Controllers
             return user;
         }
 
+        [HttpGet("login/{id}/{password}")]
+        public async Task<ActionResult<User>> Login(string id, string password)
+        {
+            var user = await _context.User.FindAsync(id);
+
+            if (user.Password != password)
+            {
+                return NotFound();
+            }
+
+            return user;
+        }
         // PUT: api/Users/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
