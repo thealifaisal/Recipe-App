@@ -23,5 +23,12 @@ doc/api/
 node_modules/
 
 .vs/
+.vs
 
 appsettings.json
+
+.dtbcache.v2
+
+ContainerRunContext.cache
+ContainerName.cache
+ContainerId.cache
