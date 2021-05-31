@@ -31,6 +31,7 @@
     ".NETCoreApp,Version=v3.1": {
       "RecipeAPI/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Certificate": "3.1.6",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.15",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.15",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.15",
@@ -312,6 +313,17 @@
         },
         "compile": {
           "RecipeAPI.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Certificate/3.1.6": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Certificate.dll": {
+            "assemblyVersion": "3.1.6.0",
+            "fileVersion": "3.100.620.31714"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Certificate.dll": {}
         }
       },
       "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.15": {
@@ -3842,6 +3854,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.AspNetCore.Authentication.Certificate/3.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hpGmI6jTpJn1q4XVLj3uNL6rgoZemlHabJOOF0rXEL1/0dUZTXqZi9NMvqp/RcFwH6K0l2KeVaU5tTVhnD/rQg==",
+      "path": "microsoft.aspnetcore.authentication.certificate/3.1.6",
+      "hashPath": "microsoft.aspnetcore.authentication.certificate.3.1.6.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.15": {
       "type": "package",
