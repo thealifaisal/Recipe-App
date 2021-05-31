@@ -27,9 +27,7 @@ namespace RecipeAPI.Models
         {
             modelBuilder.Entity<Cuisine>(entity =>
             {
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -39,9 +37,7 @@ namespace RecipeAPI.Models
 
             modelBuilder.Entity<Favorites>(entity =>
             {
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.RecipeId).HasColumnName("RecipeID");
 
@@ -64,9 +60,7 @@ namespace RecipeAPI.Models
 
             modelBuilder.Entity<Ingredient>(entity =>
             {
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -76,9 +70,7 @@ namespace RecipeAPI.Models
 
             modelBuilder.Entity<Recipe>(entity =>
             {
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.CuisineId).HasColumnName("CuisineID");
 
@@ -112,9 +104,7 @@ namespace RecipeAPI.Models
 
             modelBuilder.Entity<RecipeDirection>(entity =>
             {
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.RecipeId).HasColumnName("RecipeID");
 
@@ -132,9 +122,7 @@ namespace RecipeAPI.Models
 
             modelBuilder.Entity<RecipeIngredient>(entity =>
             {
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.IngredientId).HasColumnName("IngredientID");
 

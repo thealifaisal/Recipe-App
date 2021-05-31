@@ -80,21 +80,7 @@ namespace RecipeAPI.Controllers
         public async Task<ActionResult<RecipeDirection>> PostRecipeDirection(RecipeDirection recipeDirection)
         {
             _context.RecipeDirection.Add(recipeDirection);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (RecipeDirectionExists(recipeDirection.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRecipeDirection", new { id = recipeDirection.Id }, recipeDirection);
         }

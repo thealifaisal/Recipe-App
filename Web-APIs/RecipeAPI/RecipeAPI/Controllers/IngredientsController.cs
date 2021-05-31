@@ -80,21 +80,7 @@ namespace RecipeAPI.Controllers
         public async Task<ActionResult<Ingredient>> PostIngredient(Ingredient ingredient)
         {
             _context.Ingredient.Add(ingredient);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (IngredientExists(ingredient.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetIngredient", new { id = ingredient.Id }, ingredient);
         }

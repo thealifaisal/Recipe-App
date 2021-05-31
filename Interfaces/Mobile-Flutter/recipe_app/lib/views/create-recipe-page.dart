@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:recipe_app/app-config.dart';
 import 'package:recipe_app/components/AppBar.dart';
 import 'package:recipe_app/components/RecipeImageButton.dart';
@@ -26,6 +27,9 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
   double screenBottomPad = RecipeAppTheme.screenBottomPad;
   String recipeName, cuisineName, ingredients, steps;
 
+  var ingredientsList = ['tomatoes', 'eggs', 'milk'];
+  var selectedIng = [];
+
   @override
   Widget build(BuildContext context) {
 
@@ -41,7 +45,7 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
         children: [
 
           RecipeImageButton(
-            recipeImage: "assets/images/recipes/biryani.jpg",
+            recipeImage: "assets/images/placeholder-image.png",
             onPressedFunc: (){print("+");},
             elevation: 3,
           ),
@@ -86,13 +90,34 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
 
                     SizedBox(height: 20,),
 
-                    LongTextField(
-                      hintText: "Eggs, Oil, Tomatoes, ...",
-                      labelText: "Ingredients (comma separated)",
-                      prefixIcon: Icons.list,
-                      onValidateFunc: TextFieldController.nameValidator,
-                      onSaveFunc: (val){this.ingredients = val;},
+                    MultiSelectDialogField(
+                      items: ingredientsList.map((e) => MultiSelectItem(e, e)).toList(),
+                      listType: MultiSelectListType.LIST,
+                      onConfirm: (values) {
+                        selectedIng = values;
+                      },
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 1
+                        ),
+                        borderRadius: BorderRadius.circular(5)
+                      ),
+                      searchable: true,
+                      title: Text('Ingredients'),
+                      autovalidateMode: AutovalidateMode.always,
+                      buttonText: Text('Select Ingredients'),
+                      onSaved: (selected){
+                        selectedIng = selected;
+                      },
                     ),
+
+                    // LongTextField(
+                    //   hintText: "Eggs, Oil, Tomatoes, ...",
+                    //   labelText: "Ingredients (comma separated)",
+                    //   prefixIcon: Icons.list,
+                    //   onValidateFunc: TextFieldController.nameValidator,
+                    //   onSaveFunc: (val){this.ingredients = val;},
+                    // ),
 
                     SizedBox(height: 20,),
 
@@ -119,9 +144,6 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
               ),
             ),
           ),
-
-
-
         ],
       ),
     );

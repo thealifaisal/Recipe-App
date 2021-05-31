@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "aa52ff2a-8ce1-439e-9822-fb980806b5d7",
+		"name": "RecipeAPIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/login/alifaisal@astera.com/46546161",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"login",
+						"alifaisal@astera.com",
+						"46546161"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"alifaisal@astera.com\",\r\n    \"password\":\"46546161\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/login/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"login",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"aiman@folio3.com\",\r\n    \"name\":\"Aiman Sid\",\r\n    \"password\":\"46546161\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Users/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Users/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Ingredients",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\":\"Tomatoes\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Ingredients",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Ingredients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Ingredients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Ingredients/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Ingredients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Cuisine",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\":\"Arabian\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Cuisines",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Cuisines"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Cuisines",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Cuisines/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Cuisines",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Recipe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Id\":3,\r\n    \"Name\":\"Tikka\",\r\n    \"Description\":\"Tikka is Tikka\",\r\n    \"CuisineId\":11,\r\n    \"UserId\":\"alifaisal@astera.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Recipes/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Recipes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify Recipe",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\":\"Biryani\",\r\n    \"Description\":\"Biryani is Biryani\",\r\n    \"CuisineId\":11,\r\n    \"UserId\":\"alifaisal@astera.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Recipes/0",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Recipes",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Recipes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Recipes/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Recipes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add RecipeIng",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}
