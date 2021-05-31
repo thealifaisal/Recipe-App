@@ -80,21 +80,7 @@ namespace RecipeAPI.Controllers
         public async Task<ActionResult<Favorites>> PostFavorites(Favorites favorites)
         {
             _context.Favorites.Add(favorites);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (FavoritesExists(favorites.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetFavorites", new { id = favorites.Id }, favorites);
         }

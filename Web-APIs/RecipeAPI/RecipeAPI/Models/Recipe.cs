@@ -18,7 +18,11 @@ namespace RecipeAPI.Models
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public byte[] Image { get; set; }
+
+        #nullable enable
+        public byte[]? Image { get; set; }
+        #nullable disable
+
         public string Description { get; set; }
         public int? CuisineId { get; set; }
         public string UserId { get; set; }
