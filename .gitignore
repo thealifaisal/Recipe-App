@@ -22,6 +22,7 @@ doc/api/
 
 node_modules/
 
+.vs/RecipeAPI/v16/.suo
 .vs/
 .vs
 
