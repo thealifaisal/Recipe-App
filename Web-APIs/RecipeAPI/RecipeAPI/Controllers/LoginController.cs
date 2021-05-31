@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RecipeAPI.Models;
+using System.Text.Json;
 
 namespace RecipeAPI.Controllers
 {
@@ -27,6 +28,21 @@ namespace RecipeAPI.Controllers
             var user = await _context.User.FindAsync(id);
 
             if (user == null || !user.Password.Equals(password))
+            {
+                return NotFound();
+            }
+
+            return user;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<User>> AuthUserPOST([FromBody] object param)
+        {
+            Dictionary<String, String> jsonData = JsonSerializer.Deserialize<Dictionary<String, String>>(param.ToString());
+
+            var user = await _context.User.FindAsync(jsonData["id"]);
+
+            if (user == null || !user.Password.Equals(jsonData["password"]))
             {
                 return NotFound();
             }
