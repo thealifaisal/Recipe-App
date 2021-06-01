@@ -7,7 +7,7 @@ class ShortTextField extends AbstractTextField {
 
   final Color pinkTheme = RecipeAppTheme.pinkTheme;
   String hintText, labelText;
-  IconData prefixIcon;
+  IconData prefixIcon, suffixIcon;
   var onValidateFunc, onSaveFunc;
   var keyboardType;
 
@@ -15,6 +15,7 @@ class ShortTextField extends AbstractTextField {
     @required this.hintText,
     @required this.labelText,
     this.prefixIcon,
+    this.suffixIcon,
     @required this.onValidateFunc,
     @required this.onSaveFunc,
     this.keyboardType
@@ -31,6 +32,7 @@ class ShortTextField extends AbstractTextField {
         labelText: labelText,
         hintText: hintText,
         prefixIcon: Icon(prefixIcon),
+        suffixIcon: Icon(suffixIcon)
       ),
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (val){

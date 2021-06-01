@@ -8,6 +8,7 @@ import 'package:recipe_app/components/TextFieldLong.dart';
 import 'package:recipe_app/components/TextFieldShort.dart';
 import 'package:recipe_app/components/SideDrawer.dart';
 import 'package:recipe_app/controller/TextFieldController.dart';
+import 'package:textfield_tags/textfield_tags.dart';
 
 class CreateRecipePage extends StatefulWidget {
   @override
@@ -27,8 +28,13 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
   double screenBottomPad = RecipeAppTheme.screenBottomPad;
   String recipeName, cuisineName, ingredients, steps;
 
-  var ingredientsList = ['tomatoes', 'eggs', 'milk'];
-  var selectedIng = [];
+  List<MapEntry<int, String>> cuisinesList = [MapEntry(1,'Pakistani'), MapEntry(2,'Italian'), MapEntry(3, 'Indian')];
+  int selectedCuisine;
+
+  List<MapEntry<int, String>> ingredientsList = [MapEntry(1,'tomatoes'), MapEntry(2,'eggs'), MapEntry(3, 'milk')];
+  List<int> selectedIngredients = [];
+
+  List<String> recipeDirections = [];
 
   @override
   Widget build(BuildContext context) {
@@ -79,36 +85,85 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
 
                     SizedBox(height: 20,),
 
-                    ShortTextField(
-                      hintText: "Pakistani",
-                      labelText: "Cuisine",
-                      prefixIcon: Icons.public,
-                      onValidateFunc: TextFieldController.nameValidator,
-                      onSaveFunc: (val){this.cuisineName = val;},
-                      keyboardType: TextInputType.name,
+                    // ShortTextField(
+                    //   hintText: "Pakistani",
+                    //   labelText: "Cuisine",
+                    //   prefixIcon: Icons.public,
+                    //   onValidateFunc: TextFieldController.nameValidator,
+                    //   onSaveFunc: (val){this.cuisineName = val;},
+                    //   keyboardType: TextInputType.name,
+                    // ),
+
+                    Material(
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          side: BorderSide(color: Colors.black)),
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 45,
+                        width: screenWidth,
+                        child: DropdownButtonFormField(
+                          value: this.selectedCuisine,
+                          onChanged: (val) => this.selectedCuisine = val,
+                          onSaved: (val) => this.selectedCuisine = val,
+                          items: cuisinesList
+                              .map((item) => DropdownMenuItem(
+                            value: item.key,
+                            child: Text(item.value),
+                          )).toList(),
+                          isExpanded: true,
+                          // makes the dropdown of it's parent size. e.g: Container
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              isDense: true,
+                              hintText: 'Select Cuisine',
+                              labelStyle: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.grey
+                              ),
+                              filled: true,
+                              fillColor: Colors.white70
+                          ),
+                          isDense: true,
+                          icon: Icon(
+                            Icons.keyboard_arrow_down,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
                     ),
 
                     SizedBox(height: 20,),
 
-                    MultiSelectDialogField(
-                      items: ingredientsList.map((e) => MultiSelectItem(e, e)).toList(),
+                    MultiSelectDialogField<int>(
+                      // items: ingredientsList.map((e) => MultiSelectItem(e, e)).toList(),
+                      items: ingredientsList.map((e) => MultiSelectItem(e.key, e.value)).toList(),
                       listType: MultiSelectListType.LIST,
                       onConfirm: (values) {
-                        selectedIng = values;
+                        selectedIngredients = values;
                       },
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 1
-                        ),
-                        borderRadius: BorderRadius.circular(5)
+                          border: Border.all(
+                              width: 1
+                          ),
+                          borderRadius: BorderRadius.circular(5)
                       ),
                       searchable: true,
                       title: Text('Ingredients'),
                       autovalidateMode: AutovalidateMode.always,
-                      buttonText: Text('Select Ingredients'),
+                      buttonText: Text(
+                        'Select Ingredients',
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: Colors.black.withOpacity(0.6)
+                        ),
+                      ),
                       onSaved: (selected){
-                        selectedIng = selected;
+                        selectedIngredients = selected;
                       },
+                      height: screenHeight * 0.5,
+                      buttonIcon: Icon(Icons.keyboard_arrow_down),
                     ),
 
                     // LongTextField(
@@ -121,13 +176,35 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
 
                     SizedBox(height: 20,),
 
-                    LongTextField(
-                      hintText: "Add 5 Eggs, 1 Table Spoon Oil, ...",
-                      labelText: "Steps (comma separated)",
-                      prefixIcon: Icons.format_list_numbered,
-                      onValidateFunc: TextFieldController.nameValidator,
-                      onSaveFunc: (val){this.steps = val;},
+                    TextFieldTags(
+                      initialTags: recipeDirections,
+                      tagsStyler: TagsStyler(
+                          tagTextStyle: TextStyle(fontWeight: FontWeight.normal),
+                          tagDecoration: BoxDecoration(color: Colors.black12, borderRadius: BorderRadius.circular(5.0)),
+                          tagCancelIcon: Icon(Icons.cancel, size: 18.0, color: Colors.black),
+                          tagPadding: const EdgeInsets.all(6.0)
+                      ),
+                      textFieldStyler: TextFieldStyler(
+                        isDense: false,
+                        helperText: 'Enter Recipe Steps',
+                        hintText: 'Enter Recipe Steps',
+                      ),
+                      onTag: (tag) {
+                        recipeDirections.add(tag);
+                      },
+                      onDelete: (tag) {
+                        recipeDirections.remove(tag);
+                        print(recipeDirections);
+                      }
                     ),
+
+                    // LongTextField(
+                    //   hintText: "Add 5 Eggs, 1 Table Spoon Oil, ...",
+                    //   labelText: "Steps (comma separated)",
+                    //   prefixIcon: Icons.format_list_numbered,
+                    //   onValidateFunc: TextFieldController.nameValidator,
+                    //   onSaveFunc: (val){this.steps = val;},
+                    // ),
 
                     SizedBox(height: 20,),
 

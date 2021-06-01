@@ -38,6 +38,8 @@ dependencies:
 
   multi_select_flutter: ^4.0.0
 
+  textfield_tags: ^1.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
