@@ -1,14 +1,18 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:recipe_app/app-config.dart';
 import 'package:recipe_app/components/AppBar.dart';
 import 'package:recipe_app/components/RecipeImageButton.dart';
 import 'package:recipe_app/components/RecipeTextButton.dart';
-import 'package:recipe_app/components/TextFieldLong.dart';
 import 'package:recipe_app/components/TextFieldShort.dart';
 import 'package:recipe_app/components/SideDrawer.dart';
 import 'package:recipe_app/controller/TextFieldController.dart';
 import 'package:textfield_tags/textfield_tags.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+
 
 class CreateRecipePage extends StatefulWidget {
   @override
@@ -36,6 +40,18 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
 
   List<String> recipeDirections = [];
 
+  Uint8List _imageByteString;
+
+  void getImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.getImage(source: ImageSource.camera);
+    _imageByteString = await pickedFile.readAsBytes();
+
+    setState(() {
+
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -51,9 +67,10 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
         children: [
 
           RecipeImageButton(
-            recipeImage: "assets/images/placeholder-image.png",
-            onPressedFunc: (){print("+");},
-            elevation: 3,
+            imageByteString: _imageByteString,
+            onPressedFunc: (){
+              getImage();
+            },
           ),
 
           SizedBox(height: 10,),

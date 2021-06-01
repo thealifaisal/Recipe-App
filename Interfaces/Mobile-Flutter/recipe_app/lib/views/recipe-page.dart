@@ -49,7 +49,7 @@ class _RecipePageState extends State<RecipePage> {
         padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
         children: [
 
-          RecipeImageButton(recipeImage: "assets/images/recipes/beef-burger.jpg", elevation: 4,),
+          RecipeImageButton(recipeImagePath: "assets/images/recipes/beef-burger.jpg", elevation: 4,),
 
           SizedBox(height: 10,),
 
