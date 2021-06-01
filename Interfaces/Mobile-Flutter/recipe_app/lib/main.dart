@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: CreateRecipePage(),
+      home: SplashPage(),
       routes: {
         "splash": (context)=>SplashPage(),
         "login": (context)=>LoginPage(),

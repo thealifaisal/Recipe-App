@@ -6,6 +6,8 @@ import 'package:recipe_app/components/RecipyLogo.dart';
 import 'package:recipe_app/views/favorite-page.dart';
 import 'package:recipe_app/views/create-recipe-page.dart';
 import 'package:recipe_app/views/home-page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:recipe_app/controller/LoginController.dart';
 
 // ignore: must_be_immutable
 class RecipeSideDrawer extends StatelessWidget {
@@ -88,9 +90,7 @@ class RecipeSideDrawer extends StatelessWidget {
 
 
           RecipeDrawerTile(tileIcon: Icons.arrow_back_outlined, title: "Logout", onTap: (){
-
-
-
+            LoginController.LogoutUser(context);
           }),
 
         ],
