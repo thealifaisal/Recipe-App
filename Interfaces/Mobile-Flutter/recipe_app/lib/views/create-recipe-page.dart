@@ -42,14 +42,45 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
 
   Uint8List _imageByteString;
 
-  void getImage() async {
+  void getImage(ImageSource imgSrc) async {
     final picker = ImagePicker();
-    final pickedFile = await picker.getImage(source: ImageSource.camera);
+    final pickedFile = await picker.getImage(source: imgSrc, imageQuality: 50);
     _imageByteString = await pickedFile.readAsBytes();
 
     setState(() {
 
     });
+  }
+
+  void _showPicker(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+            child: Container(
+              child: new Wrap(
+                children: <Widget>[
+                  new ListTile(
+                      leading: new Icon(Icons.photo_library),
+                      title: new Text('Gallery'),
+                      onTap: () {
+                        getImage(ImageSource.gallery);
+                        Navigator.of(context).pop();
+                      }),
+                  new ListTile(
+                    leading: new Icon(Icons.photo_camera),
+                    title: new Text('Camera'),
+                    onTap: () {
+                      getImage(ImageSource.camera);
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+        }
+    );
   }
 
   @override
@@ -69,7 +100,7 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
           RecipeImageButton(
             imageByteString: _imageByteString,
             onPressedFunc: (){
-              getImage();
+              _showPicker(context);
             },
           ),
 
