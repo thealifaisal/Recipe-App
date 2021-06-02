@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:recipe_app/data_models/User.dart';
 import 'package:recipe_app/views/favorite-page.dart';
 import 'package:recipe_app/views/create-recipe-page.dart';
 import 'package:recipe_app/views/home-page.dart';
@@ -7,7 +10,16 @@ import 'package:recipe_app/views/recipe-page.dart';
 import 'package:recipe_app/views/register-page.dart';
 import 'package:recipe_app/views/splash-page.dart';
 
+class MyHttpOverrides extends HttpOverrides{
+  @override
+  HttpClient createHttpClient(SecurityContext context){
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+  }
+}
+
 void main() {
+  HttpOverrides.global = new MyHttpOverrides();
   runApp(MyApp());
 }
 
@@ -21,7 +33,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: SplashPage(),
+      home: HomePage(),
       routes: {
         "splash": (context)=>SplashPage(),
         "login": (context)=>LoginPage(),

@@ -5,6 +5,8 @@ import 'package:recipe_app/components/RecipeTextButton.dart';
 import 'package:recipe_app/components/RecipyLogo.dart';
 import 'package:recipe_app/components/TextFieldPassword.dart';
 import 'package:recipe_app/components/TextFieldShort.dart';
+import 'package:recipe_app/controller/LoginController.dart';
+import 'package:recipe_app/controller/RegisterController.dart';
 import 'package:recipe_app/controller/TextFieldController.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -174,14 +176,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         if(formKey.currentState.validate()){
                           formKey.currentState.save();
                           print('form valid');
-//                          Navigator.of(context).pushReplacement(
-//                              MaterialPageRoute(
-//                                settings: RouteSettings(
-//                                    name: "home"
-//                                ),
-//                                builder: (context)=>HomePage(),
-//                              )
-//                          );
+
+                          RegisterController.registerUser(context, email, password, name);
                         }
                         else{
                           print('form invalid');

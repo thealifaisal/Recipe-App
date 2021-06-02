@@ -1,14 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:recipe_app/components/RecipeTextButton.dart';
 import 'package:recipe_app/components/RecipyLogo.dart';
 import 'package:recipe_app/components/TextFieldPassword.dart';
 import 'package:recipe_app/components/TextFieldShort.dart';
+import 'package:recipe_app/controller/LoginController.dart';
 import 'package:recipe_app/controller/TextFieldController.dart';
 import 'package:recipe_app/views/register-page.dart';
 import 'package:recipe_app/app-config.dart';
-
-import 'home-page.dart';
+import 'package:recipe_app/views/home-page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -25,8 +27,10 @@ class _LoginPageState extends State<LoginPage> {
   bool hidePass;
   IconData visIcon;
   String email, password;
+  String ipAddress, portNo;
 
   var formKey = GlobalKey<FormState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -36,6 +40,8 @@ class _LoginPageState extends State<LoginPage> {
     borderRadius = 5;
     hidePass = true;
     visIcon = Icons.visibility;
+    ipAddress = RecipeAppTheme.ipAddress;
+    portNo = RecipeAppTheme.httpPort;
 
     // TODO: implement initState
     super.initState();
@@ -49,6 +55,7 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       backgroundColor: pinkTheme,
+      key: scaffoldKey,
       body: Stack(
         children: [
 
@@ -165,18 +172,13 @@ class _LoginPageState extends State<LoginPage> {
                       btnText: "Login",
                       height: 50,
                       width: 150,
-                      onPressedFunc: (){
+                      onPressedFunc: ()async{
                         if(formKey.currentState.validate()){
                           formKey.currentState.save();
                           print('form valid');
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                settings: RouteSettings(
-                                    name: "home"
-                                ),
-                                builder: (context)=>HomePage(),
-                              )
-                          );
+
+                          var i = await LoginController.authenticateUser(context, email, password);
+
                         }
                         else{
                           print('form invalid');

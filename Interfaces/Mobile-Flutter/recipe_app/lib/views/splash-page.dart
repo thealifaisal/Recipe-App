@@ -54,7 +54,7 @@ class _SplashPageState extends State<SplashPage> {
       // if user is login, go to HomePage
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-              builder: (context)=>HomePage(/*user: this.user,*/)
+              builder: (context)=>HomePage(user: this.user,)
           )
       );
     }

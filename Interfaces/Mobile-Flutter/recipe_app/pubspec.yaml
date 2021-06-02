@@ -41,6 +41,8 @@ dependencies:
   textfield_tags: ^1.2.0
   image_picker: ^0.8.0
 
+  http: ^0.13.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

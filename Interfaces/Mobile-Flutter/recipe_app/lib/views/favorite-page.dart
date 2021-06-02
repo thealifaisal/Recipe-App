@@ -57,14 +57,12 @@ class _FavoriteRecipesPageState extends State<FavoriteRecipesPage> {
           RecipeCard(
             imagePath: "assets/images/recipes/beef-burger.jpg",
             recipeName: "Beef Burger",
-            onPressedFunc: onPressedFunc,
             favIcon: Icons.favorite,
           ),
 
           RecipeCard(
             imagePath: "assets/images/recipes/spaghetti.jpg",
             recipeName: "Spaghetti",
-            onPressedFunc: onPressedFunc,
             favIcon: Icons.favorite,
           ),
 
